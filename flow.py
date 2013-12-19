@@ -34,7 +34,7 @@ while True:
             total_pulses = total_pulses + pulses
             liters = float(total_pulses)/5600
             #                print ("Liters:", liters)
-            data = {"timestamp":datetime.datetime.utcnow(),
+            data = {"timestamp":datetime.datetime.utcnow().isoformat(),
                     "keg":keg_name,
                     "total_pulses":total_pulses,
                     "pulses":pulses,
