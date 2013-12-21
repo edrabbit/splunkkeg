@@ -39,5 +39,5 @@ while True:
                     "total_pulses":total_pulses,
                     "pulses":pulses,
                     "consumption":round(liters, 3)}
-            print data
-            of.write(str(data)+'\n')
+            print json.dumps(data)
+            of.write(json.dumps(data)+'\n')
