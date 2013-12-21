@@ -4,6 +4,7 @@ import datetime
 import serial
 import urllib2
 import json
+import pytz
 
 # Serial port connection
 try:
@@ -34,8 +35,10 @@ while True:
             total_pulses = total_pulses + pulses
             liters = float(pulses)/5600
             #                print ("Liters:", liters)
+            dt = datetime.datetime.utcnow()
+            dt.replace(tzinfo=pytz.utc)
             if (pulses > 0.01):
-                data = {"timestamp":datetime.datetime.utcnow().isoformat(),
+                data = {"timestamp":dt.isoformat(),
                         "keg":keg_name,
                         "total_pulses":total_pulses,
                         "pulses":pulses,
