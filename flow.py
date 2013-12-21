@@ -35,10 +35,9 @@ while True:
             total_pulses = total_pulses + pulses
             liters = float(pulses)/5600
             #                print ("Liters:", liters)
-            dt = datetime.datetime.utcnow()
-            dt.replace(tzinfo=pytz.utc)
+            
             if (pulses > 0.01):
-                data = {"timestamp":dt.isoformat(),
+                data = {"timestamp":datetime.datetime.now().replace(tzinfo=pytz.UTC).isoformat(),
                         "keg":keg_name,
                         "total_pulses":total_pulses,
                         "pulses":pulses,
