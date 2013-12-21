@@ -34,10 +34,11 @@ while True:
             total_pulses = total_pulses + pulses
             liters = float(pulses)/5600
             #                print ("Liters:", liters)
-            data = {"timestamp":datetime.datetime.utcnow().isoformat(),
-                    "keg":keg_name,
-                    "total_pulses":total_pulses,
-                    "pulses":pulses,
-                    "consumption":round(liters, 3)}
-            print json.dumps(data)
-            of.write(json.dumps(data)+'\n')
+            if (pulses > 0.01):
+                data = {"timestamp":datetime.datetime.utcnow().isoformat(),
+                        "keg":keg_name,
+                        "total_pulses":total_pulses,
+                        "pulses":pulses,
+                        "consumption":round(liters, 3)}
+                print json.dumps(data)
+                of.write(json.dumps(data)+'\n')
